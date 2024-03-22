@@ -1,0 +1,42 @@
+#include<stdio.h>
+int bis(int a[],int low,int high,int target)
+{
+	int mid;
+	if(high>=low)
+	{
+		mid=(low+high)/2;
+		if(a[mid]==target)
+		{
+			return mid;
+		}
+		else if(a[mid<target])
+		{
+			return bis(a,mid+1,high,target);
+		}
+		else
+		return bis(a,low,mid-1,target);
+	}
+	return -1;
+}
+int main()
+{
+	int a[100],n,i,low,high,target;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	scanf("%d",&target);
+	int res=bis(a,0,n-1,target);
+	printf("\nThe array elements are : ");
+	for(i=0;i<n;i++)
+	printf("%d ",a[i]);
+	printf("\ntarget : %d ",target);
+	if(res==-1)
+	{
+		printf("\nthe target is not found");
+	}
+	else
+	printf("\ntarget is found at %d position",res);
+	
+}
